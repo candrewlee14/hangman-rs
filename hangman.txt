@@ -1,0 +1,18 @@
+-----------
+| HANGMAN |
+-----------
+
+ |------|
+ |      |
+ |      O
+ |     /|\
+ |     / \
+_|__
+
+coolwords
+---------
+
+Wrong Letters:
+a b c d e
+ 
+Next Guess: f
