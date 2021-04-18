@@ -26,7 +26,7 @@ impl HangmanCPU {
     fn random_word() -> Result<String> {
         if !Path::new("wordlist.txt").exists() {
             println!("Downloading wordlist file...");
-            let mut res = reqwest::blocking::get("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt")?;
+            let mut res = reqwest::blocking::get("https://raw.githubusercontent.com/InnovativeInventor/dict4schools/master/safedict_full.txt")?;
             let mut file = File::create("wordlist.txt")?;
             res.copy_to(&mut file)?;
         }

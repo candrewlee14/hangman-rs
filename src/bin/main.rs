@@ -71,7 +71,7 @@ impl HangmanGame {
                                 .execute(Print(" ".repeat(17)))?;
                             return Ok(guess);
                         },
-                        KeyCode::Esc => exit(1),
+                        KeyCode::Esc => exit_game(s)?,
                         _ => (),
                     }                   
                 }
@@ -117,6 +117,12 @@ impl HangmanGame {
 	}
 }
 
+
+fn exit_game(s: &mut Stdout) -> Result<()>{
+    s.execute(terminal::LeaveAlternateScreen)?;
+    terminal::disable_raw_mode()?;
+    exit(1);
+}
 
 fn run() -> Result<()> {
 	let mut stdout = stdout();
