@@ -26,9 +26,10 @@ impl HangmanCPU {
     fn random_word() -> Result<String> {
         if !Path::new("wordlist.txt").exists() {
             println!("Downloading wordlist file...");
-            let mut res = reqwest::blocking::get("https://raw.githubusercontent.com/InnovativeInventor/dict4schools/master/safedict_full.txt")?;
+            let mut res = ureq::get("https://raw.githubusercontent.com/InnovativeInventor/dict4schools/master/safedict_full.txt").call()?;
             let mut file = File::create("wordlist.txt")?;
-            res.copy_to(&mut file)?;
+            std::io::copy(&mut res.into_reader(), &mut file);
+                
         }
         let file = File::open("wordlist.txt")?;
         let reader = BufReader::new(file);
